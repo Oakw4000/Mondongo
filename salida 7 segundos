@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Temporizador de Salida</title>
+    <script>
+        // Variable para almacenar el temporizador
+        let timer;
+
+        // Función que se ejecuta cuando el usuario cambia de pestaña
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                // Si el usuario sale de la página, inicia el temporizador de 7 segundos
+                timer = setTimeout(() => {
+                    alert("Has estado fuera por 7 segundos. Saliendo...");
+                    window.location.href = "https://www.ejemplo.com"; // Cambia esta URL a donde quieras redirigir o ejecutar acción de salida
+                }, 7000); // 7000 ms = 7 segundos
+            } else {
+                // Si el usuario regresa a la página, limpia el temporizador
+                clearTimeout(timer);
+            }
+        }
+
+        // Detecta cambios de visibilidad en la página
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+    </script>
+</head>
+<body>
+    <h1>Bienvenido a la Página</h1>
+    <p>Si cambias de pestaña, serás redirigido después de 7 segundos.</p>
+</body>
+</html>
